@@ -1,48 +1,39 @@
 package by.academy.homework6.Task4;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Random;
-
+import java.nio.charset.StandardCharsets;
 
 public class App {
 
     private static final Random rand = new Random();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
+
+        int sizeFile = 0;
         File dir = new File("./src/by/academy/homework6/Task4/Text_Files");
 
         if (!dir.exists()) {
             dir.mkdir();
         }
 
-        int sizeFile = 0;
-
-        File readFile = new File(".\\src\\by\\academy\\homework6\\Task2\\Text_task_2");
-
-        try (FileReader reader = new FileReader(readFile)) {
-
-            while (reader.read() != -1) {
-                sizeFile++;
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
         File resultFile = new File("./src/by/academy/homework6/Task4/Result.txt");
 
         if (!resultFile.exists()) {
-            try {
-                resultFile.createNewFile();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            resultFile.createNewFile();
         }
 
+        try (FileWriter resultWriter = new FileWriter(resultFile)) {
 
-        try (FileWriter resultWriter = new FileWriter(resultFile)) { // writer for resulting file
+            String text = new String(Files.readAllBytes(Paths.get("./src/by/academy/homework6/Task2/Text_task_2")));
+            sizeFile = text.length();
 
             for (int i = 1; i <= 100; i++) {
+
                 File outputFile = new File(dir, Integer.valueOf(i) + ".txt");
 
                 if (!outputFile.exists()) {
@@ -51,26 +42,27 @@ public class App {
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
+
                 }
 
-                int length = rand.nextInt(sizeFile);
+                int j = rand.nextInt(sizeFile);
 
-                try (BufferedReader reader = new BufferedReader(new FileReader(readFile));
-                     BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+                try (FileWriter writer = new FileWriter(outputFile)) {
 
-                    char[] chars = new char[length];
-                    reader.read(chars);
-                    writer.write(chars);
-                    resultWriter.write(outputFile.getName() + ", size: " + length + "\n");
+                    writer.write(text.substring(0, j));
 
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
+
+                resultWriter.write(outputFile.getName() + ", size: " + j + "\n");
+
             }
 
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
 
     }
 }
