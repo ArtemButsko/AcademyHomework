@@ -16,7 +16,7 @@ public class Person {
         super();
     }
 
-    public Person(String firstName, String lastName, LocalDate dateOfBirth) {
+    public Person(String firstName, int age, String lastName, LocalDate dateOfBirth) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -25,6 +25,10 @@ public class Person {
     }
 
     public Person(String firstName, String lastName, int age, String dateOfBirth) {
+    }
+
+    public Person(String firstName, String lastName, LocalDate age, String dateOfBirth) {
+
     }
 
     public String getFirstName() {

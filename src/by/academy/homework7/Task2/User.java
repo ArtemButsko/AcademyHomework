@@ -10,7 +10,7 @@ public class User extends Person {
     String email;
 
     User(String firstName, String lastName, LocalDate age, String dateOfBirth, String login, String password, String email) {
-        super(firstName, lastName, age, dateOfBirth);
+        super(firstName, lastName,  age, dateOfBirth);
         this.login = login;
         this.password = password;
         this.email = email;
