@@ -43,35 +43,35 @@ public class App {
 
             Field userFirstName = User.class.getSuperclass().getDeclaredField("firstName");
             userFirstName.setAccessible(true);
-            userFirstName.set(user, "Johnny");
+            userFirstName.set(user, "Artem");
 
             Field userLastName = User.class.getSuperclass().getDeclaredField("lastName");
             userLastName.setAccessible(true);
-            userLastName.set(user, "Silverhand");
+            userLastName.set(user, "Minskiy");
 
             Field userDateOfBirth = User.class.getSuperclass().getDeclaredField("dateOfBirth");
             userDateOfBirth.setAccessible(true);
-            userDateOfBirth.set(user, LocalDate.of(1988, Month.NOVEMBER, 16));
+            userDateOfBirth.set(user, LocalDate.of(1985, Month.MAY, 11));
 
             Field userAge = User.class.getSuperclass().getDeclaredField("age");
             userAge.setAccessible(true);
             userAge.set(user, Period.between
-                    (LocalDate.of(1988, Month.NOVEMBER, 16), LocalDate.now()).getYears());
+                    (LocalDate.of(1985, Month.MAY, 11), LocalDate.now()).getYears());
 
             Field userLogin = userClass.getDeclaredField("login");
             userLogin.setAccessible(true);
-            userLogin.set(user, "SilverJohnny");
+            userLogin.set(user, "MinskiyArtem");
 
             Field userPassword = userClass.getDeclaredField("password");
             userPassword.setAccessible(true);
-            userPassword.set(user, "Cyberpunk2@77");
+            userPassword.set(user, "Artem77");
 
             Field userEmail = userClass.getDeclaredField("email");
             userEmail.setAccessible(true);
-            userEmail.set(user, "johnny.silverhand@gmail.com");
+            userEmail.set(user, "artem.minskiy@gmail.com");
 
             Field userGreeting = userClass.getField("greeting");
-            userGreeting.set(user, "hello");
+            userGreeting.set(user, "hi!");
 
             Method info = userClass.getDeclaredMethod("printUserInfo");
             info.invoke(user);
