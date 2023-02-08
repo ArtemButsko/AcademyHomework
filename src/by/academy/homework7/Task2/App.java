@@ -13,8 +13,8 @@ public class App {
     public static void main(String[] args) {
 
         User user = new User
-                ("Vincent", "V", LocalDate.of(2000, Month.JUNE, 10),
-                        "StreetKid", "Cyberpunk2077", "v.streetkid@nightcity.com", "bye");
+                ("Oleg", "Olegov", LocalDate.of(1996, Month.MARCH, 15),
+                        "15.03.1996", "Oleg77", "olrgov.olegov@yandex.ru", "bye");
 
         user.printUserInfo();
 
