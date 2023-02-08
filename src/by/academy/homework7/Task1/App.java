@@ -8,7 +8,6 @@ import java.util.stream.Stream;
 
 
 public class App {
-    private static final Random rand = new Random();
 
     public static void main(String[] args) {
 
